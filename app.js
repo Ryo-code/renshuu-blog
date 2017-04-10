@@ -1,8 +1,9 @@
 'use strict';
 
-let bodyParser  = require("body-parser"),
-    express     = require('express'),
-    app         = express();
+let methodOverride = require("method-override"),
+    bodyParser     = require("body-parser"),
+    express        = require('express'),
+    app            = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -50,5 +51,5 @@ app.delete("/things/:id", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Running blog server~~~~~!");
+  console.log("Running server~~~~~!");
 });
