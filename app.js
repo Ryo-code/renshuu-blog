@@ -41,14 +41,14 @@ app.get("/things/:id/edit", (req, res) => {
 
 //Route 6: Update~~
 app.put("/dogs/:id", (req, res) => {
-  res.render("show");
+  res.render("things/:id");
 });
 
 //Route 7: Delete~~
-app.delete("/dogs/:id", (req, res) => {
+app.delete("/things/:id", (req, res) => {
   res.redirect("/thing");
 });
 
 app.listen(3000, () => {
-  console.log("Running blog server~~~~~!")
+  console.log("Running blog server~~~~~!");
 });
