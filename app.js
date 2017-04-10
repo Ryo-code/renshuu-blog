@@ -8,11 +8,11 @@ let methodOverride = require("method-override"),
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(methodOverride("_method")); //Used to make the POST method in the edit file actually a PUT request (by overriding it)
+// app.use(methodOverride("_method")); //Used to make the POST method in the edit file actually a PUT request (by overriding it)
 
 //Route 0: Root route
 app.get("/", (req, res) => {
-  res.redirect("/thing");
+  res.redirect("/things");
 });
 
 //Route 1: Index~~
