@@ -1,11 +1,15 @@
-.header-image{
-  margin-top:2.5em;
+main {
+  margin-top: 2.5em;
+
+  /*padding-top: 33em;*/
+}
+
+.main-banner{
   background: url(./../images/header-pic.jpg) no-repeat;
   background-size: cover;
   background-position: center;
   height: 30em;
+  margin-bottom: 2em;
+  /*overflow: hidden*/
 }
 
-main {
-  padding-top: 33em;
-}

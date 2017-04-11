@@ -1,5 +1,39 @@
+<% include partials/header %>
 
-<h1> This is the NEW.ejs file</h1>
+<br>
+<br>
 
-<p> You'll need... 1) blog post title, 2) URL for a video to embed, 3) </p>
+<div class="ui main text container segment">
+  <h1> 
+    This is the NEW.ejs file
+  </h1>
 
+  <form class="ui form " action="/things" method="POST">
+    <div class="field">
+      <label>Blog Post Title</label>
+      <input type="text" name="thing[title]" placeholder="Title">
+    </div>
+
+    <div class="field">
+      <label>Image URL</label>
+      <input type="text" name="thing[image]" placeholder="url">
+    </div>
+
+    <div class="Youtube video ID">
+      <label>Youtube video ID</label>
+      <input type="text" name="thing[image]" placeholder="https://www.youtube.com/watch?v=...">
+    </div>
+
+    <div class="field">
+      <label>Additional Info</label>
+      <textarea name="thing[body]" placeholder="Write your post here"></textarea>
+    </div>
+
+    <button class="ui inverted green button">Submit</button>
+  </form>
+
+</div>
+
+<br>
+
+<% include partials/footer %>
