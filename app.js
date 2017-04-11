@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   res.redirect("/things");
 });
 
-//Route 1: Index~~
+//Route 1: Index~~ (the homepage)
 app.get("/things", (req, res) => {
   res.render("index");
 });
@@ -30,7 +30,7 @@ app.post("/things", (req, res) => {
   res.redirect("/things/:id");
 });
 
-//Route 4: Show~~
+//Route 4: Show~~ (each individual blog post)
 app.get("/things/:id", (req, res) => {
   res.render("show");
 });
@@ -41,7 +41,7 @@ app.get("/things/:id/edit", (req, res) => {
 });
 
 //Route 6: Update~~
-app.put("/dogs/:id", (req, res) => {
+app.put("/things/:id", (req, res) => {
   res.render("things/:id");
 });
 
@@ -50,6 +50,6 @@ app.delete("/things/:id", (req, res) => {
   res.redirect("/thing");
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("Running server~~~~~!");
 });

@@ -1,5 +1,5 @@
-
 .header-image{
+  margin-top:2.5em;
   background: url(./../images/header-pic.jpg) no-repeat;
   background-size: cover;
   background-position: center;
@@ -7,5 +7,5 @@
 }
 
 main {
-  padding-top: 31em;
+  padding-top: 33em;
 }
