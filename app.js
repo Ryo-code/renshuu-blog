@@ -32,14 +32,9 @@ const tempTHINGSarray = [
 ];
 
 
-//Route 0: Root route
+//Route 1: Index~~ (Root redirects to homepage)
 app.get("/", (req, res) => {
-  res.redirect("/things");
-});
-
-//Route 1: Index~~ (the homepage)
-app.get("/things", (req, res) => {
-  res.render("index");
+    res.render("index", {data: tempTHINGSarray});
 });
 
 //Route 2: New~~
@@ -73,5 +68,5 @@ app.delete("/things/:id", (req, res) => {
 });
 
 app.listen(3001, () => {
-  console.log("Running server~~~~~!");
+  console.log("Running server on port 3001!");
 });
