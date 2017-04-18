@@ -23,20 +23,21 @@ const thingSchema = new mongoose.Schema({
 });
 const Thing = mongoose.model("Thing", thingSchema);
 
-Thing.create({
-    title: "First Blog Post", 
-    image: "https://s-media-cache-ak0.pinimg.com/originals/1b/9c/de/1b9cded0bd00fe7cabe88a68a0b7aada.jpg", 
-    video: "f09876543", 
-    info: "This is the first blog post. I hardcoded this into my app.js file with the 'Thing.create' function, rather than some fancy form",
-});
+/****** Created this just to test the mongo set-up, delete later *****/
+// Thing.create({
+//     title: "First Blog Post...?", 
+//     image: "https://s-media-cache-ak0.pinimg.com/originals/1b/9c/de/1b9cded0bd00fe7cabe88a68a0b7aada.jpg", 
+//     video: "f09876543", 
+//     info: "Not really a post, but w/e. I hardcoded this into my app.js file with the 'Thing.create' function, rather than some fancy form",
+// });
 
 /****   RESTful Routes   ****/
 const tempTHINGSarray = [
   {
-    title: "First Blog Post", 
+    title: "This is Eri", 
     image: "https://s-media-cache-ak0.pinimg.com/originals/1b/9c/de/1b9cded0bd00fe7cabe88a68a0b7aada.jpg", 
-    video: "f09876543", 
-    info: "This is the first blog post",
+    video: "xYyzn5D5GU8", 
+    info: "This is the 1st post I put in the tempTHINGSarray. An Eri Nobuchika video, it's good",
   },
   {
     title: "Blog Post Numero Duce", 
@@ -48,7 +49,7 @@ const tempTHINGSarray = [
     title: "Post of the Third", 
     image: "https://img.clipartfox.com/b76d78022cfb782b9727f33b49a1c5dd_1-10-vector-image-artistic-numbers-clipart_6621-3238.png", 
     video: "grwadsaf", 
-    info: "This is the first blog post",
+    info: "This is the 3rd blog post",
   },
 ];
 
