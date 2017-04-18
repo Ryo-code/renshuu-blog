@@ -43,13 +43,13 @@ const tempTHINGSarray = [
     title: "Blog Post Numero Duce", 
     image: "https://images2.alphacoders.com/467/467407.jpg", 
     video: "yIRTh0fWVY4", 
-    info: "This is the 2nd blog post",
+    info: "This is the 2nd hardcoded blog post inside app.js",
   },
   {
     title: "Post of the Third", 
     image: "https://img.clipartfox.com/b76d78022cfb782b9727f33b49a1c5dd_1-10-vector-image-artistic-numbers-clipart_6621-3238.png", 
     video: "tRbK379V1U4", 
-    info: "This is the 3rd blog post",
+    info: "The 3rd hardcoded post",
   },
 ];
 
@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
     if(err){
       console.log("Error!");
     } else {
-      res.render("index", {data: tempTHINGSarray});
+      res.render("index", {data: things});
     }
   });
 });
@@ -72,12 +72,15 @@ app.get("/things/new", (req, res) => {
 
 //Route 3: Create~~
 app.post("/things", (req, res) => {
-  /* PSEUDO-CODE:
-    1) create the blog post 
-        -> (use Blog.create, and pass in data & callback)
-    2) redirect to the index page
-  */
-  res.redirect("/things/:id");
+  Thing.create(req.body.blogpost, (err, newThing) => {
+    //it's called "blogpost" because that's what I named it in the form
+    if(err){
+      res.render("new");
+    } else {
+      console.log(newThing);
+      res.redirect("/");
+    }
+  });
 });
 
 //Route 4: Show~~ (each individual blog post)
