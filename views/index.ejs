@@ -19,7 +19,7 @@
   </iframe>
 
   <% data.forEach((article) => { %>
-    <div>
+    <div class="item container">
       <h3><%= article.title %></h3>
       <img src="<%= article.image %>" style="height:15em">
       <span><%= article.timestamp %></span>
@@ -32,8 +32,13 @@
       >
       </iframe>
       <p><%= article.info %></p>
+      <a class="ui floated basic violet button" href="/things/<%= article._id %>">
+        Read More <i class="right chevron icon big"></i>
+      </a>
     </div>
     <br>
+
+
   <% }); %>
 
   <br>

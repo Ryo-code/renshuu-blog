@@ -75,6 +75,7 @@ app.post("/things", (req, res) => {
   Thing.create(req.body.blogpost, (err, newThing) => {
     //it's called "blogpost" because that's what I named it in the form
     if(err){
+      console.log("Error... redirecting back to the form")
       res.render("new");
     } else {
       console.log(newThing);
@@ -85,7 +86,14 @@ app.post("/things", (req, res) => {
 
 //Route 4: Show~~ (each individual blog post)
 app.get("/things/:id", (req, res) => {
-  res.render("show");
+  Thing.findById(req.params.id, (err, foundThing) => {
+    if(err){
+      res.redirect("/");
+    } else {
+  res.render("show", {data: foundThing});
+    }
+  })
+
 });
 
 //Route 5: Edit~~
