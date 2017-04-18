@@ -72,6 +72,11 @@ app.get("/things/new", (req, res) => {
 
 //Route 3: Create~~
 app.post("/things", (req, res) => {
+  /* PSEUDO-CODE:
+    1) create the blog post 
+        -> (use Blog.create, and pass in data & callback)
+    2) redirect to the index page
+  */
   res.redirect("/things/:id");
 });
 
