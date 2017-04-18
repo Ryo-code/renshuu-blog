@@ -42,13 +42,13 @@ const tempTHINGSarray = [
   {
     title: "Blog Post Numero Duce", 
     image: "https://images2.alphacoders.com/467/467407.jpg", 
-    video: "adfsdaf", 
+    video: "yIRTh0fWVY4", 
     info: "This is the 2nd blog post",
   },
   {
     title: "Post of the Third", 
     image: "https://img.clipartfox.com/b76d78022cfb782b9727f33b49a1c5dd_1-10-vector-image-artistic-numbers-clipart_6621-3238.png", 
-    video: "grwadsaf", 
+    video: "tRbK379V1U4", 
     info: "This is the 3rd blog post",
   },
 ];
@@ -56,7 +56,13 @@ const tempTHINGSarray = [
 
 //Route 1: Index~~ (Root redirects to homepage)
 app.get("/", (req, res) => {
-    res.render("index", {data: tempTHINGSarray});
+  Thing.find({}, (err, things) => {
+    if(err){
+      console.log("Error!");
+    } else {
+      res.render("index", {data: tempTHINGSarray});
+    }
+  });
 });
 
 //Route 2: New~~

@@ -12,10 +12,28 @@
   <iframe 
     width="560" 
     height="315" 
-    src="http://www.youtube.com/embed/<%= data[0].video %>?autoplay=0&cc_load_policy=1&color=white&controls=1&showinfo=1&rel=0"    frameborder="0" 
+    src="http://www.youtube.com/embed/<%= data[0].video %>?autoplay=0&cc_load_policy=1&color=white&controls=1&showinfo=1&rel=0"    
+    frameborder="0" 
     allowfullscreen
   >
   </iframe>
+
+  <% data.forEach((article) => { %>
+    <div>
+      <h3><%= article.title %></h3>
+      <img src="<%= article.image %>" style="height:15em">
+      <span><%= article.timestamp %></span>
+      <iframe 
+        width="560" 
+        height="315" 
+        src="http://www.youtube.com/embed/<%= article.video %>"    
+        frameborder="1" 
+        allowfullscreen
+      >
+      </iframe>
+      <p><%= article.info %></p>
+    </div>
+  <% }); %>
 
   <br>
   <p> :D </p>
