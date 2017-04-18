@@ -2,14 +2,35 @@
 
 let methodOverride = require("method-override"),
     bodyParser     = require("body-parser"),
+    mongoose       = require("mongoose"),
     express        = require('express'),
     app            = express();
 
+/****   APP Config   ****/
+mongoose.connect("mongodb://localhost/renshuu_blog_app"); //first time this code runs it'll create this db... after that it'll connect to it
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.use(express.static("public")); //so that we can serve our custom stylesheet
 app.use(bodyParser.urlencoded({extended: true}));
 // app.use(methodOverride("_method")); //Used to make the POST method in the edit file actually a PUT request (by overriding it)
 
+/****   Mongoose Model Config   ****/
+const thingSchema = new mongoose.Schema({
+  title: String,
+  image: String,
+  video: String,
+  info: String,
+  timestamp: {type: Date, default: Date.now} //Makes it so that the current date is automatically inserted by default
+});
+const Thing = mongoose.model("Thing", thingSchema);
+
+Thing.create({
+    title: "First Blog Post", 
+    image: "https://s-media-cache-ak0.pinimg.com/originals/1b/9c/de/1b9cded0bd00fe7cabe88a68a0b7aada.jpg", 
+    video: "f09876543", 
+    info: "This is the first blog post. I hardcoded this into my app.js file with the 'Thing.create' function, rather than some fancy form",
+});
+
+/****   RESTful Routes   ****/
 const tempTHINGSarray = [
   {
     title: "First Blog Post", 

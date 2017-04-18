@@ -7,12 +7,12 @@
   <h3> (this is the index page) </h3>
   <p> Yep, it's true</p>
   <p>Maybe you can try to embed a youtube video of something tech-related</p>
-  <p> <%= data[0].title %> </p>
+  <p> Blog post: <%= data[0].title %> </p>
 
   <iframe 
     width="560" 
     height="315" 
-    src="http://www.youtube.com/embed/xYyzn5D5GU8?autoplay=0&cc_load_policy=1&color=white&controls=1&showinfo=1&rel=0"    frameborder="0" 
+    src="http://www.youtube.com/embed/<%= data[0].video %>?autoplay=0&cc_load_policy=1&color=white&controls=1&showinfo=1&rel=0"    frameborder="0" 
     allowfullscreen
   >
   </iframe>
