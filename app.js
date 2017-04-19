@@ -1,9 +1,10 @@
 'use strict';
 
 let methodOverride = require("method-override"),
+  expressSanitizer = require("express-sanitizer"),
     bodyParser     = require("body-parser"),
     mongoose       = require("mongoose"),
-    express        = require('express'),
+    express        = require("express"),
     app            = express();
 
 /****   APP Config   ****/
@@ -11,6 +12,7 @@ mongoose.connect("mongodb://localhost/renshuu_blog_app"); //first time this code
 app.set("view engine", "ejs");
 app.use(express.static("public")); //so that we can serve our custom stylesheet
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitizer()); //must go AFTER bodyParser
 app.use(methodOverride("_method")); //Used to override the POST methods in edit & delete
 
 /****   Mongoose Model Config   ****/
@@ -50,8 +52,18 @@ app.get("/things/new", (req, res) => {
 
 //Route 3: Create~~
 app.post("/things", (req, res) => {
+  console.log("Unsanitized version: " + req.body)
+  req.body.blogpost.info = req.sanitize(req.body.blogpost.info)
+  //The first "req.body" refers to "the data coming from the form"
+  //the "blogpost.info" refers to "additional info" in new.ejs...
+  console.log("Sanitized version: " + req.body)
+  //This sanitization step is necessary because you did "<%-" instead of "<%="
+  //Essentially, it just means that if anyone types <script> [some nasty code] </script>,
+  //then it won't actually run. So this is only necessary if users will be
+  //writing stuff on here (e.g. in the comments section).
+  
   Thing.create(req.body.blogpost, (err, newThing) => {
-    //it's called "blogpost" because that's what I named it in the form
+    //It's called "blogpost" because that's what I named it in the form
     if(err){
       console.log("Error... redirecting back to the form")
       res.render("new");
@@ -86,6 +98,7 @@ app.get("/things/:id/edit", (req, res) => {
 
 //Route 6: Update~~
 app.put("/things/:id", (req, res) => {
+  req.body.blog.info = req.sanitize(req.body.blog.info) //see the Create route for comments
   Thing.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
   // the 3 parameters: 1) ID, 2) new data (i.e. the name attribute in the edit form), 3) callback
     if(err){

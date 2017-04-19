@@ -1,6 +1,7 @@
 <% include ./partials/header %>
 
 <div class="main-banner"></div>
+<!-- The banner image -->
 
 <div class="ui text container">
   <h1> HOMEPAGE (index)</h1>
@@ -14,27 +15,26 @@
 
     For that, I think you should use moment.js instead of what it is now.
 -->
+  <div class="ui segment">
 
-  <% data.forEach((article) => { %>
-    <div class="item container">
-      <h3><%= article.title %></h3>
-      <span><%= article.timestamp.toDateString() %></span>
-      <img src="<%= article.image %>" style="height:10em">
-      <iframe 
-        width="560" 
-        height="315" 
-        src="http://www.youtube.com/embed/<%= article.video %>"    
-        frameborder="1" 
-        allowfullscreen
-      >
-      </iframe>
-      <p><%= article.info %></p>
-      <a class="ui floated basic violet button" href="/things/<%= article._id %>">
-        Read More <i class="right chevron icon big"></i>
-      </a>
-    </div>
-    <br>
-  <% }); %>
+      <% data.forEach((article) => { %>
+          <a href="/things/<%= article._id %>"> 
+            <h3><%= article.title %></h3>
+          </a>
+
+          <span><%= article.timestamp.toDateString() %></span>
+          <img src="<%= article.image %>" style="height:10em">
+          <iframe 
+            width="560" 
+            height="315" 
+            src="http://www.youtube.com/embed/<%= article.video %>"    
+            frameborder="1" 
+            allowfullscreen
+          > </iframe>
+          <p><%= article.info %></p>
+        <br>
+      <% }); %>
+  </div>
 
 </div>
 
