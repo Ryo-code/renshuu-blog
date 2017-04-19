@@ -11,7 +11,7 @@ mongoose.connect("mongodb://localhost/renshuu_blog_app"); //first time this code
 app.set("view engine", "ejs");
 app.use(express.static("public")); //so that we can serve our custom stylesheet
 app.use(bodyParser.urlencoded({extended: true}));
-// app.use(methodOverride("_method")); //Used to make the POST method in the edit file actually a PUT request (by overriding it)
+app.use(methodOverride("_method")); //Used to override the POST methods in edit & delete
 
 /****   Mongoose Model Config   ****/
 const thingSchema = new mongoose.Schema({
@@ -92,18 +92,30 @@ app.get("/things/:id", (req, res) => {
     } else {
   res.render("show", {data: foundThing});
     }
-  })
-
+  });
 });
 
 //Route 5: Edit~~
 app.get("/things/:id/edit", (req, res) => {
-  res.render("edit");
+  Thing.findById(req.params.id, (err, foundThing) => {
+    if(err){
+      res.redirect("/things");
+    } else {
+  res.render("edit", {data: foundThing});
+    }
+  });
 });
 
 //Route 6: Update~~
 app.put("/things/:id", (req, res) => {
-  res.render("things/:id");
+  Thing.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
+  // the 3 parameters: 1) ID, 2) new data (i.e. the name attribute in the edit form), 3) callback
+    if(err){
+      res.redirect("/things");
+    } else {
+      res.redirect("/things/" + req.params.id);
+    }
+  });  
 });
 
 //Route 7: Delete~~

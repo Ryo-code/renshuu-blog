@@ -1,13 +1,53 @@
 <% include partials/header %>
 
-<br><br>
+<br>
+<br>
 
 <div class="ui main text container segment">
-    <div class="ui huge header">
+  <h1> 
+    Edit <%= data.title %>
+  </h1>
+
+  <form class="ui form " action="/things/<%= data._id %>?_method=PUT" method="POST">
+  <!-- In a split-second after you click the update button, the form data is
+  sent to the URL bar (i.e. a get request) as query parameters, so the 
+  method-override package looks for "_method=" to know that you should actually
+  treat this POST request as a put. So it overrides POST to whatever you want.  -->
+    <div class="field">
+      <label>Blog Post Title</label>
+      <input type="text" name="blog[title]" value="<%= data.title %>">
     </div>
 
-    <form>
-    </form>
+    <div class="field">
+      <label>Image URL</label>
+      <input type="text" name="blog[image]" value="<%= data.image %>">
+    </div>
+
+    <div class="field">
+      <label>Youtube video ID</label>
+      <input type="text" name="blog[video]" value="<%= data.video %>">
+    </div>
+
+    <div class="field">
+      <label>Additional Info</label>
+      <textarea name="blog[info]" value="<%= data.info %>"></textarea>
+    </div>
+
+    <button type="submit" class="ui basic button">
+      <i class="icon send outline"></i>
+      Update
+    </button>
+
+    <button type="submit" class="ui green button">Submit</button>
+
+    <button type="submit" class="ui right labeled icon button">
+      <i class="right arrow icon"></i>
+      Submit
+    </button>
+
+
+  </form>
+
 </div>
 
 <br>
