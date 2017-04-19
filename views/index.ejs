@@ -3,26 +3,23 @@
 <div class="main-banner"></div>
 
 <div class="ui text container">
-  <h1>Show Me Things</h1>
-  <h3> (this is the index page) </h3>
-  <p> Yep, it's true</p>
-  <p> Maybe you can try to embed a youtube video of something tech-related</p>
-  <p> Blog post: <%= data[0].title %> </p>
+  <h1> HOMEPAGE (index)</h1>
 
-  <iframe 
-    width="560" 
-    height="315" 
-    src="http://www.youtube.com/embed/<%= data[0].video %>?autoplay=0&cc_load_policy=1&color=white&controls=1&showinfo=1&rel=0"    
-    frameborder="0" 
-    allowfullscreen
-  >
-  </iframe>
+<!--TODO:
+    You'll need to make is so that with just one API call,
+    you can make the 3 (or however many) most recent posts
+    show up in one array at the top, whereas the later ones
+    show up below with less info (and pagination, and all that
+    stuff). Because that's how you decided to make it this.
+
+    For that, I think you should use moment.js instead of what it is now.
+-->
 
   <% data.forEach((article) => { %>
     <div class="item container">
       <h3><%= article.title %></h3>
-      <img src="<%= article.image %>" style="height:15em">
-      <span><%= article.timestamp %></span>
+      <span><%= article.timestamp.toDateString() %></span>
+      <img src="<%= article.image %>" style="height:10em">
       <iframe 
         width="560" 
         height="315" 
@@ -37,16 +34,8 @@
       </a>
     </div>
     <br>
-
-
   <% }); %>
 
-  <br>
-  <p> :D </p>
-  <p> For the real thing, only stick in the iframe embeds for the latest 3 (or 6 or w/e), and just have a blog link to the other ones (or else it'll slow down too much) </p>
-  <p> Don't worry much about the create route, because you'll try to automate that process later </p>
-  <p>~</p>
-  <p></p>
 </div>
 
 <% include ./partials/footer %>

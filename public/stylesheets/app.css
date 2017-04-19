@@ -8,7 +8,7 @@ main {
   background: url(./../images/header-pic.jpg) no-repeat;
   background-size: cover;
   background-position: center;
-  height: 30em;
+  height: 40em;
   margin-bottom: 2em;
   /*overflow: hidden*/
 }
