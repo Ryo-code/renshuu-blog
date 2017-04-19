@@ -1,8 +1,5 @@
 <% include partials/header %>
 
-
-
-
 <br><br><br><br>
 
 <div class="ui main text container segment">
@@ -17,13 +14,7 @@
       <span> Posted: <%= data.timestamp.toDateString() %></span>
     </div>
 
-    <div class="description">
-      <p><%- data.info %></p>
-      <!--If you have a dash (instead of an equal sign) before data.info, 
-      it'll take what data.info returns and runs it as code (not a string). 
-      This is so powerful that you'll need to "sanitize" your script tags 
-      (e.g. express sanitizer) in order to ensure cyber security -->
-    </div>
+
 
     <iframe 
       width="560" 
@@ -33,6 +24,14 @@
       allowfullscreen
     > 
     </iframe>
+
+    <div class="description">
+      <p><%- data.info %></p>
+      <!--If you have a dash (instead of an equal sign) before data.info, 
+      it'll take what data.info returns and runs it as code (not a string). 
+      This is so powerful that you'll need to "sanitize" your script tags 
+      (e.g. express sanitizer) in order to ensure cyber security -->
+    </div>
 
     <br>
 

@@ -32,28 +32,6 @@ const Thing = mongoose.model("Thing", thingSchema);
 // });
 
 /****   RESTful Routes   ****/
-const tempTHINGSarray = [
-  {
-    title: "This is Eri", 
-    image: "https://s-media-cache-ak0.pinimg.com/originals/1b/9c/de/1b9cded0bd00fe7cabe88a68a0b7aada.jpg", 
-    video: "xYyzn5D5GU8", 
-    info: "This is the 1st post I put in the tempTHINGSarray. An Eri Nobuchika video, it's good",
-  },
-  {
-    title: "Blog Post Numero Duce", 
-    image: "https://images2.alphacoders.com/467/467407.jpg", 
-    video: "yIRTh0fWVY4", 
-    info: "This is the 2nd hardcoded blog post inside app.js",
-  },
-  {
-    title: "Post of the Third", 
-    image: "https://img.clipartfox.com/b76d78022cfb782b9727f33b49a1c5dd_1-10-vector-image-artistic-numbers-clipart_6621-3238.png", 
-    video: "tRbK379V1U4", 
-    info: "The 3rd hardcoded post",
-  },
-];
-
-
 //Route 1: Index~~ (Root redirects to homepage)
 app.get("/", (req, res) => {
   Thing.find({}, (err, things) => {
@@ -120,7 +98,14 @@ app.put("/things/:id", (req, res) => {
 
 //Route 7: Delete~~
 app.delete("/things/:id", (req, res) => {
-  res.redirect("/thing");
+  Thing.findByIdAndRemove(req.params.id, (err) => {
+    if(err){
+      console.log("There was an error in finding and delete the post...");
+      res.redirect("/blogs");
+    } else {
+      res.redirect("/");
+    }
+  })
 });
 
 app.listen(3001, () => {
